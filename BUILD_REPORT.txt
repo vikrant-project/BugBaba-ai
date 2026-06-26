@@ -1,0 +1,37 @@
+BugBaba AI Build Report
+Generated: 2026-06-26 11:34:46 UTC
+================================================================================
+
+SERVICES
+  Backend (FastAPI):  http://localhost:8478
+  Frontend (Nginx):   http://ec2-54-251-29-35.ap-southeast-1.compute.amazonaws.com:5478
+  API Health:         PASS
+  Frontend Load:      PASS
+  Analyze Endpoint:   PASS
+
+AI MODE
+  NVIDIA API Key configured: yes
+  Mode: live
+  Model: meta/llama-3.1-70b-instruct
+
+GITHUB
+  Repository: https://github.com/vikrant-project/BugBaba-ai
+  Push status: SUCCESS
+  Commit: cd2c1704e4b917cf73f2430f6f39c088b7e17843
+
+PM2 PROCESSES
+  bugbaba-api -> online
+
+FILES CREATED
+  60 source files written
+
+QUICK ACCESS
+  App URL: http://ec2-54-251-29-35.ap-southeast-1.compute.amazonaws.com:5478
+  API Docs: http://ec2-54-251-29-35.ap-southeast-1.compute.amazonaws.com:8478/docs
+  GitHub: https://github.com/vikrant-project/BugBaba-ai
+
+NEXT STEPS
+  1. Open the app URL in your browser
+  2. If showing Demo Mode banner: set NVIDIA_API_KEY in ~/bugbaba/backend/.env
+     then: pm2 restart bugbaba-api
+  3. Paste some code and enjoy the roast!
