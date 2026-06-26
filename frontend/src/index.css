@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-tertiary: #1a1a24;
+  --accent-primary: #6366f1;
+  --accent-secondary: #8b5cf6;
+  --accent-danger: #ef4444;
+  --accent-warning: #f59e0b;
+  --accent-success: #10b981;
+  --accent-roast: #f97316;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-glow: rgba(99, 102, 241, 0.3);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+::selection { background: rgba(99, 102, 241, 0.4); color: white; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-border {
+  box-shadow: 0 0 0 1px var(--border-glow), 0 0 24px -8px rgba(99, 102, 241, 0.5);
+}
+
+.bg-animated {
+  background: radial-gradient(ellipse at 0% 0%, rgba(99,102,241,0.10), transparent 50%),
+              radial-gradient(ellipse at 100% 100%, rgba(139,92,246,0.10), transparent 50%),
+              var(--bg-primary);
+  background-size: 200% 200%;
+  animation: gradientShift 18s ease infinite;
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+}
+
+/* Typewriter cursor */
+.typewriter-cursor::after {
+  content: '|';
+  margin-left: 2px;
+  animation: blink 0.9s steps(2) infinite;
+  color: var(--accent-roast);
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Spotlight on roast card */
+.spotlight {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 30% 20%, rgba(249, 115, 22, 0.18), transparent 45%);
+  pointer-events: none;
+  animation: spotlight 9s ease-in-out infinite;
+}
+@keyframes spotlight {
+  0%, 100% { transform: translate(-6%, -8%); }
+  50% { transform: translate(8%, 10%); }
+}
+
+/* CodeMirror tweaks */
+.cm-editor {
+  background: var(--bg-tertiary) !important;
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+}
+.cm-editor.cm-focused { outline: none; }
+.cm-scroller { font-family: 'JetBrains Mono', monospace !important; }
+.cm-gutters {
+  background: var(--bg-secondary) !important;
+  border-right: 1px solid #22222e !important;
+  color: #4b5563 !important;
+}
+
+/* Score ring */
+.score-ring {
+  transform: rotate(-90deg);
+}
+
+/* Loading bug ascii */
+.ascii-bug {
+  font-family: 'JetBrains Mono', monospace;
+  white-space: pre;
+  font-size: 11px;
+  line-height: 1.15;
+  color: var(--accent-primary);
+  text-shadow: 0 0 12px rgba(99,102,241,0.6);
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(99,102,241,0.6)); }
+  50%      { filter: drop-shadow(0 0 18px rgba(139,92,246,0.9)); }
+}
+
+/* Stagger helpers */
+.delay-0 { animation-delay: 0ms; }
+.delay-1 { animation-delay: 100ms; }
+.delay-2 { animation-delay: 200ms; }
+.delay-3 { animation-delay: 300ms; }
+.delay-4 { animation-delay: 400ms; }
+.delay-5 { animation-delay: 500ms; }
+.delay-6 { animation-delay: 600ms; }
+.delay-7 { animation-delay: 700ms; }
+
+button:focus-visible, select:focus-visible, [role="button"]:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
